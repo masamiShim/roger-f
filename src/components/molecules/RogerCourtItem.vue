@@ -4,7 +4,7 @@
       <RogerCheck :id="id"
                   :courtId="courtId"
                   :name="name"
-                  :check="handleCheck(id)"
+                  @check="handleCheck(id, courtId)"
       />
     </span>
     <span class="roger-court-item-name">{{ courtName }}</span>
@@ -47,7 +47,7 @@ export default {
   methods: {
     handleCheck (id, courtId) {
       // vuexで管理してるやつ
-      this.$store.dispatch('toggleSelect', id, courtId)
+      this.$store.dispatch('toggleSelect', { id, courtId })
     }
   }
 }

@@ -33,12 +33,6 @@ let periods = [
 export default {
   name: 'RogerSearchPeriodCondition',
   components: {RogerCheck},
-  props: {
-    selected: {
-      type: Boolean,
-      required: true
-    }
-  },
   data () {
     return {
       periods: periods

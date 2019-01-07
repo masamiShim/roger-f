@@ -5,19 +5,20 @@ export default {
   fetchCourts: ({commit, state}) => {
     CourtFinder.fetch()
       .then((availableCourts) => {
+        console.log(availableCourts)
         commit(types.FETCH_COURT, availableCourts)
       })
       .catch(err => {
         throw err
       })
   },
-  changePeriod: ({commit, state, code}) => {
+  changePeriod: ({commit, state}, code) => {
     commit(types.CHANGE_PERIOD, code)
   },
-  changeWeek: ({commit, state, code}) => {
+  changeWeek: ({commit, state}, code) => {
     commit(types.CHANGE_WEEK, code)
   },
-  toggleSelect: ({commit, state, id, courtId}) => {
-    commit(types.SELECT_COURT, { id: id, courtId: courtId })
+  toggleSelect: ({commit, state}, {id, courtId}) => {
+    commit(types.SELECT_COURT, { id, courtId })
   }
 }

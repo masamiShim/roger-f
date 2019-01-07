@@ -3,7 +3,7 @@
      <input class="roger-checkbox"
             type="checkbox"
             name="name"
-            @click="handleCheck"
+            @click="handleCheck()"
      />
     <slot/>
   </span>

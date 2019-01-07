@@ -6,7 +6,6 @@
         <RogerCourtItem
           :id="court.id"
           :courtId="court.courtId"
-          :name="court.name"
           :courtName="court.courtName"
           :time="court.time"
           :courtNum="court.courtNum"/>

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <span v-for="week in weeks" :key="week.id">
+    <div v-for="week in weeks" :key="week.id">
       <label>
         {{ week.label }}
       </label>
       <RogerCheck :click="handleCheck(week.code)"/>
-    </span>
+    </div>
   </div>
 </template>
 <script>
-import RogerCheck from '@/components/RogerCheck'
+import RogerCheck from '@/components/atoms/RogerCheck'
 
-let weeks = [
+let _weeks = [
   {
     id: 1,
     code: 1,
@@ -53,7 +53,7 @@ export default {
   components: {RogerCheck},
   data () {
     return {
-      weeks: weeks
+      weeks: _weeks
     }
   },
   methods: {
