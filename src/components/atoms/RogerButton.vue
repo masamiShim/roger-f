@@ -37,6 +37,13 @@ export default {
 
 <style scoped>
   .roger-button {
-    padding: .6em 1.3em
+    padding: .6em 1.3em;
+    background-color: transparent;
+    border: 1px solid #565656;
+    border-radius: 12px;
+  }
+  .roger-button:hover {
+    background: rgba(190,190,190, .5);
+    cursor: pointer;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
- <div>
+ <header class="header">
    Header
- </div>
+ </header>
 </template>
 
 <script>
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style scoped>
-
+ .header {
+   background-color: #ababab;
+   line-height: 60px;
+ }
 </style>

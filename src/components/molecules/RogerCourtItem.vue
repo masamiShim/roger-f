@@ -4,12 +4,13 @@
       <RogerCheck :id="id"
                   :courtId="courtId"
                   :name="name"
-                  @check="handleCheck(id, courtId)"
-      />
+                  @check="handleCheck(id, courtId)">
+
+        <span class="roger-court-item-name">{{ courtName }}</span>
+        <span class="roger-court-item-time">{{ time }}～</span>
+        <span class="roger-court-item-num">{{ courtNum }}面</span>
+      </RogerCheck>
     </span>
-    <span class="roger-court-item-name">{{ courtName }}</span>
-    <span class="roger-court-item-time">{{ time }}～</span>
-    <span class="roger-court-item-num">{{ courtNum }}面</span>
   </div>
 </template>
 
@@ -47,7 +48,7 @@ export default {
   methods: {
     handleCheck (id, courtId) {
       // vuexで管理してるやつ
-      this.$store.dispatch('toggleSelect', { id, courtId })
+      this.$store.dispatch('toggleSelect', {id, courtId})
     }
   }
 }

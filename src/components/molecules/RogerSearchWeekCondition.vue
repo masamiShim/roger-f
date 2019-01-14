@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <div v-for="week in weeks" :key="week.id">
-      <label>
-        {{ week.label }}
-      </label>
-      <RogerCheck :click="handleCheck(week.code)"/>
-    </div>
+  <div class="clear-fix">
+    <ul class="week-list" v-for="week in weeks" :key="week.id">
+      <li class="week-list-item">
+        <RogerCheck :id="week.id" :name="'week'" :click="handleCheck(week.code)">
+          {{ week.label }}
+        </RogerCheck>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -66,5 +67,25 @@ export default {
 </script>
 
 <style scoped>
+  .week-list {
+    width: 100%;
+    line-height: 30px;
+    box-sizing: border-box;
+  }
+
+  .week-list-item {
+    display: block;
+    float: left;
+    width: calc(100% / 7);
+    box-sizing: border-box;
+  }
+
+  .week-list-item:last-child {
+    margin-left: 0;
+  }
+
+  .clear-fix {
+    clear: both;
+  }
 
 </style>

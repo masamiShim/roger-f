@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <span v-for="period in periods" :key="period.id">
-      <label>
-        {{ period.label }}
-      </label>
-      <RogerCheck :click="handleCheck(period.code)"/>
-    </span>
+  <div class="clear-fix">
+    <ul>
+      <li class="period-list" v-for="period in periods" :key="period.id">
+        <RogerCheck class="period-list-item" :id="period.id" :name="'_period'" :click="handleCheck(period.code)">
+          {{ period.label }}
+        </RogerCheck>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -47,5 +48,23 @@ export default {
 </script>
 
 <style scoped>
+  .period-list {
+    width: 100%;
+    line-height: 30px;
+    box-sizing: border-box;
+  }
 
+  .period-list-item {
+    display: block;
+    float: left;
+    width: calc(100% / 3);
+    box-sizing: border-box;
+  }
+
+  .period-list-item:last-child {
+    margin-left: 0;
+  }
+  .clear-fix {
+    clear: both;
+  }
 </style>

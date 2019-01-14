@@ -1,5 +1,4 @@
 import * as types from './mutation-types'
-//import _ from 'loadash'
 
 export default {
   [types.CHANGE_PERIOD] (state, period) {
