@@ -45,10 +45,34 @@ module.exports = app => {
       week: 2,
       date: '20180101'
     },
+    {
+      id: 5,
+      courtId: 3,
+      courtName: '滝の根公園コート',
+      time: '10:00',
+      courtNum: 1,
+      week: 2,
+      date: '20180101'
+    },
   ]
 
   // 利用可能コート取得APIモック
   app.get('/lists', (req, res) => {
-    res.json({list: courts})
+    const courtByDate = courts.reduce((res, cur) => {
+      const elem = res.find((item) => item.date === cur.date);
+      if (elem) {
+        console.log('Elementあったよー')
+        elem.courts.push(cur)
+        console.log(elem)
+        console.log(res)
+      } else {
+        res.push({
+          date: cur.date,
+          courts: [cur]
+        })
+      }
+      return res;
+    }, []);
+    res.json({list: courtByDate})
   })
 }

@@ -1,16 +1,19 @@
 <template>
   <div>
-    <ul>
-      <li v-for="court in courts"
-          :key="court.id">
-        <RogerCourtItem
-          :id="court.id"
-          :courtId="court.courtId"
-          :courtName="court.courtName"
-          :time="court.time"
-          :courtNum="court.courtNum"/>
-      </li>
-    </ul>
+      <div v-for="item in courts" :key="item.date">
+        <div class="c-list-courts__title l-list-courts__title">{{ item.date }}</div>
+        <ul class="c-list-courts l-list-courts" style="overflow: hidden">
+          <li v-for="court in item.courts"
+              :key="court.id">
+            <RogerCourtItem
+              :id="court.id"
+              :courtId="court.courtId"
+              :courtName="court.courtName"
+              :time="court.time"
+              :courtNum="court.courtNum"/>
+          </li>
+        </ul>
+      </div>
   </div>
 </template>
 
@@ -30,5 +33,32 @@ export default {
 </script>
 
 <style scoped>
+  .c-list-court__title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 2em;
+  }
 
+  .c-list-courts {
+
+  }
+
+  .l-list-court {
+    width: 80%;
+    margin: 50px auto 0 auto;
+  }
+
+  .l-list-courts {
+  }
+
+  .c-list-courts__title {
+    font-size: 1.3em;
+    letter-spacing: .1em;
+  }
+
+  .l-list-courts__title {
+    text-align: left;
+    letter-spacing: .1em;
+  }
 </style>

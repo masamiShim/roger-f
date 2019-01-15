@@ -1,6 +1,7 @@
 <template>
   <div class="roger-court-item">
-    <span class="roger-court-check">
+    <span class="
+">
       <RogerCheck :id="id"
                   :courtId="courtId"
                   :name="name"
@@ -56,7 +57,10 @@ export default {
 
 <style scoped>
   .roger-court-item {
-    width: 100%;
+    width: 50%;
+    height: fit-content;
+    display: block;
+    float: left;
   }
 
   .roger-court-check {
