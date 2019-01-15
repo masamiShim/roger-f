@@ -18,6 +18,7 @@ export default {
     background-color: green;
   }
   .l-footer {
+    margin-top: 100px;
 /*
     position:fixed;
     bottom: 0;

@@ -6,8 +6,8 @@
         <div class="c-form-search__title l-form-search__title">検索条件</div>
         <RogerSearchForm/>
       </section>
-      <section class="l-form-search">
-        <div class="c-form-search__title l-form-search__title">コート一覧</div>
+      <section class="c-search-result l-search-result">
+        <div class="c-search-result__title l-search-result__title">コート一覧</div>
         <RogerAvailableCourtList :courts="getCourt()"/>
       </section>
     </div>
@@ -31,22 +31,22 @@ export default {
     }
   },
   /*
-    computed: {
-      filterCourt () {
-        /*
-          const now = new Date()
+      computed: {
+        filterCourt () {
+          /*
+            const now = new Date()
 
-          now.setDate(now.getDate() + parseInt(this.$store.state.searchCondition.period))
-          const filteredCourtsByPeriod = courts
-            .filter(court => (court.date <= formatter.formatDateZeroPad(now, 'yyyyMMdd')))
-          return this.filterByWeek(filteredCourtsByPeriod)
-          return this.filterByWeek(courts)
-        const courts = this.$store.state.availableCourts
-        return courts
-        //      return !courts ? [] : courts
-      }
-    },
-  */
+            now.setDate(now.getDate() + parseInt(this.$store.state.searchCondition.period))
+            const filteredCourtsByPeriod = courts
+              .filter(court => (court.date <= formatter.formatDateZeroPad(now, 'yyyyMMdd')))
+            return this.filterByWeek(filteredCourtsByPeriod)
+            return this.filterByWeek(courts)
+          const courts = this.$store.state.availableCourts
+          return courts
+          //      return !courts ? [] : courts
+        }
+      },
+    */
   methods: {
     getCourt () {
       return this.$store.state.availableCourts
@@ -63,10 +63,10 @@ export default {
   beforeMount () {
     this.$store.dispatch('fetchCourts')
     /*
-        this.intervalId = setInterval(function () {
-          _store.dispatch('fetchCourts')
-        }, 3000)
-         */
+          this.intervalId = setInterval(function () {
+            _store.dispatch('fetchCourts')
+          }, 3000)
+           */
   },
   beforeDestroy () {
     //    clearInterval(this.intervalId)
@@ -84,18 +84,35 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
+
   .c-form-search__title {
     font-size: 1.5em;
   }
+
   .l-form-search__title {
     text-align: left;
   }
-  .l-list-court {
 
-  }
   .c-form-search__title {
 
   }
+
   .l-form-search__title {
   }
+
+  .l-search-result {
+    width: 80%;
+    margin: 50px auto 0 auto;
+  }
+  .c-search-result {
+  }
+  .c-search-result__title {
+    font-size: 1.3em;
+  }
+
+  .l-search-result__title {
+    text-align: left;
+    margin-bottom: 2em;
+  }
+
 </style>

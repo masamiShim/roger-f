@@ -54,9 +54,10 @@ export default {
   .label {
     display: block;
     border: 1px solid #ababab;
-    padding: 20px;
+    padding: 0 12px;
+    line-height: 2em;
     width: 100%;
-    height: 3em;
+    height: 2em;
     box-sizing: border-box;
   }
 

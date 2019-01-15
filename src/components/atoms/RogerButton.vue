@@ -41,6 +41,7 @@ export default {
     background-color: transparent;
     border: 1px solid #565656;
     border-radius: 12px;
+    width: 100%;
   }
   .roger-button:hover {
     background: rgba(190,190,190, .5);

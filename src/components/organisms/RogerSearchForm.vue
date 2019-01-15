@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
   .l-form-search__button {
-    margin-top: 60px;
+    margin-top: 80px;
   }
   .c-form-search__label {
     font-size: 1.2em;
@@ -58,7 +58,6 @@ export default {
   .l-form-search__input {
   }
   .l-form-search__row {
-    padding-left: 20px;
     margin-top: 50px;
   }
 </style>
