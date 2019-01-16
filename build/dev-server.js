@@ -12,7 +12,7 @@ module.exports = app => {
     {
       id: 1,
       courtId: 1,
-      courtName: '青葉台コート',
+      courtName: '□□□□コート',
       time: '13:00',
       courtNum: 2,
       week: 6,
@@ -21,7 +21,7 @@ module.exports = app => {
     {
       id: 2,
       courtId: 1,
-      courtName: '青葉台コート',
+      courtName: '□□□□コート',
       time: '10:00',
       courtNum: 1,
       week: 7,
@@ -30,7 +30,7 @@ module.exports = app => {
     {
       id: 3,
       courtId: 2,
-      courtName: '弁財公園コート',
+      courtName: '△△△△コート',
       time: '12:00',
       courtNum: 2,
       week: 1,
@@ -39,7 +39,7 @@ module.exports = app => {
     {
       id: 4,
       courtId: 3,
-      courtName: '滝の根公園コート',
+      courtName: '〇〇〇〇コート',
       time: '14:00',
       courtNum: 1,
       week: 2,
@@ -48,7 +48,7 @@ module.exports = app => {
     {
       id: 5,
       courtId: 3,
-      courtName: '滝の根公園コート',
+      courtName: '〇〇〇〇コート',
       time: '10:00',
       courtNum: 1,
       week: 2,
