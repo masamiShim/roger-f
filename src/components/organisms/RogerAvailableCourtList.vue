@@ -1,8 +1,12 @@
 <template>
   <div>
+    <div v-if="isEmptyCourt()">
+      空きコートが存在しません。
+    </div>
+    <div v-else>
       <div class="c-list-court__row l-list-court__row" v-for="item in courts" :key="item.date">
         <div class="c-list-courts__title l-list-courts__title">{{ item.date }}</div>
-        <ul class="c-list-courts l-list-courts" >
+        <ul class="c-list-courts l-list-courts">
           <li v-for="court in item.courts"
               :key="court.id">
             <RogerCourtItem
@@ -14,6 +18,7 @@
           </li>
         </ul>
       </div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +33,12 @@ export default {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    isEmptyCourt () {
+      return !this.courts && this.courts.length < 1
+    }
+
   }
 }
 </script>
@@ -62,14 +73,17 @@ export default {
     letter-spacing: .1em;
     margin-bottom: 1.2em;
   }
+
   .c-list-court__row {
     border-bottom: 1px dotted #ababab;
     padding-bottom: 1.2em;
   }
+
   .c-list-court__row:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
+
   .l-list-court__row {
     margin-bottom: 1.5em;
   }

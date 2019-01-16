@@ -1,7 +1,6 @@
 <template>
   <footer class="footer l-footer">
-    Footer
-    <div>Copyright freitech</div>
+    <div>&copy; 2019 freitech.</div>
   </footer>
 </template>
 
@@ -14,8 +13,11 @@ export default {
 <style scoped>
   .footer {
     height: 100px;
+    line-height: 100px;
     width: 100%;
-    background-color: green;
+    background: rgba(124, 252, 0, .4);
+    color: #1a3300;
+    border-top: 2px solid green;
   }
   .l-footer {
     margin-top: 100px;

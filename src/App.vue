@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <font-awesome-icon icon="coffee" />
     <router-view/>
   </div>
 </template>
@@ -22,9 +21,14 @@ export default {
 body, ul, li {
   padding: 0;
   margin: 0;
+  background: rgba(255,255,255, .9);
 }
 ul {
   list-style: none;
 }
-
+@font-face {
+  font-family: 'mini-wakuwaku';
+  src: url("assets/mini-wakuwaku.otf");
+  src: url("assets/mini-wakuwaku-maru.otf");
+}
 </style>

@@ -56,23 +56,27 @@ module.exports = app => {
     },
   ]
 
-  // 利用可能コート取得APIモック
-  app.get('/lists', (req, res) => {
-    const courtByDate = courts.reduce((res, cur) => {
+  let groupByDate = (res, cur) => {
       const elem = res.find((item) => item.date === cur.date);
       if (elem) {
-        console.log('Elementあったよー')
         elem.courts.push(cur)
-        console.log(elem)
-        console.log(res)
       } else {
         res.push({
           date: cur.date,
           courts: [cur]
         })
       }
-      return res;
-    }, []);
+      return res
+  }
+
+  // 利用可能コート取得APIモック
+  app.get('/lists', (req, res) => {
+    const courtByDate = courts.reduce(groupByDate, []);
+
+    const sortedByDate = courtByDate.sort((pre, cur) => {
+      return pre.date > cur.date
+    });
     res.json({list: courtByDate})
   })
 }
+

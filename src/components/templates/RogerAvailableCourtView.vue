@@ -2,13 +2,15 @@
   <div>
     <RogerHeader/>
     <div class="main-content">
-      <section class="l-form-search">
+      <section class="c-form-search l-form-search">
         <div class="c-form-search__title l-form-search__title">検索条件</div>
         <RogerSearchForm/>
       </section>
       <section class="c-search-result l-search-result">
         <div class="c-search-result__title l-search-result__title">コート一覧</div>
-        <RogerAvailableCourtList :courts="getCourt()"/>
+          <RogerAvailableCourtList :courts="getCourt()"/>
+        <div>
+        </div>
       </section>
     </div>
     <RogerFooter/>
@@ -76,28 +78,25 @@ export default {
 
 <style scoped>
   .main-content {
-    margin-top: 80px;
+    margin-top: 60px;
+  }
+  .c-form-search {
   }
 
   .l-form-search {
-    padding-top: 50px;
     width: 80%;
     margin: 0 auto;
   }
 
   .c-form-search__title {
     font-size: 1.5em;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: .75em;
   }
 
   .l-form-search__title {
     text-align: left;
-  }
-
-  .c-form-search__title {
-
-  }
-
-  .l-form-search__title {
   }
 
   .l-search-result {
@@ -107,7 +106,10 @@ export default {
   .c-search-result {
   }
   .c-search-result__title {
-    font-size: 1.3em;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: .75em;
   }
 
   .l-search-result__title {

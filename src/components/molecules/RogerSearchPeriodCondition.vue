@@ -2,16 +2,16 @@
   <div class="clear-fix">
     <ul>
       <li class="period-list" v-for="period in periods" :key="period.id">
-        <RogerCheck class="period-list-item" :id="period.id" :name="'_period'" :click="handleCheck(period.code)">
+        <RogerRadio class="period-list-item" :id="period.id" :name="'_period'" :click="handleCheck(period.code)">
           {{ period.label }}
-        </RogerCheck>
+        </RogerRadio>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import RogerCheck from '@/components/atoms/RogerCheck'
+import RogerRadio from '@/components/atoms/RogerRadio'
 
 let periods = [
   {
@@ -33,7 +33,7 @@ let periods = [
 
 export default {
   name: 'RogerSearchPeriodCondition',
-  components: {RogerCheck},
+  components: {RogerRadio},
   data () {
     return {
       periods: periods

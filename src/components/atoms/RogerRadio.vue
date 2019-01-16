@@ -1,7 +1,7 @@
 <template>
   <span>
      <input class="roger-checkbox"
-            type="checkbox"
+            type="radio"
             :name="name"
             :id="formedId"
             @click="handleCheck()"
@@ -14,11 +14,11 @@
 
 <script>
 export default {
-  name: 'RogerCheck',
+  name: 'RogerRadio',
   props: {
     name: {
       type: String,
-      default: 'check'
+      default: 'radio'
     },
     id: {
       type: Number,
@@ -35,7 +35,7 @@ export default {
       this.$emit('check', ev)
     },
     getId () {
-      return `${this.name}-check-${this.id}`
+      return `${this.name}-radio-${this.id}`
     }
 
   }
@@ -47,7 +47,7 @@ export default {
     font-size: 1.2em;
   }
 
-  input[type="checkbox"] {
+  input[type="radio"] {
     display: none;
   }
 
@@ -62,7 +62,7 @@ export default {
   }
   .label::before {
     font-family: "Font Awesome 5 Free";
-    content: "\f0c8";
+    content: "\f111";
     display: inline-flex;
     width: 28px;
     height: 20px;
@@ -72,12 +72,12 @@ export default {
     cursor: pointer;
   }
 
-  input[type=checkbox]:checked + .label {
+  input[type=radio]:checked + .label {
     color: #fc7e00;
   }
-  input[type=checkbox]:checked + .label::before {
+  input[type=radio]:checked + .label::before {
     font-family: "Font Awesome 5 Free";
-    content: "\f14a";
+    content: "\f058";
     display: inline-flex;
     width: 28px;
     height: 20px;
