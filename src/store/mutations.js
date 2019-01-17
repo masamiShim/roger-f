@@ -8,10 +8,13 @@ export default {
   [types.CHANGE_WEEK] (state, week) {
     console.log('------ change week ')
     if (state.searchCondition.week.has(week)) {
+      console.log('------ delete week ')
       state.searchCondition.week.delete(week)
-    } else {
-      state.searchCondition.week.add(week)
+      return
     }
+
+    console.log('------ add week ')
+    state.searchCondition.week.add(week)
   },
   [types.SELECT_COURT] (state, payload) {
     const {id, courtId} = payload

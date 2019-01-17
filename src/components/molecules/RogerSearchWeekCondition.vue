@@ -2,7 +2,11 @@
   <div class="clear-fix">
     <ul class="week-list" v-for="week in weeks" :key="week.id">
       <li class="week-list-item">
-        <RogerCheck :id="week.id" :name="'week'" :click="handleCheck(week.code)">
+        <RogerCheck :id="week.id"
+                    :name="'week'"
+                    @check="handleCheck(week.code)"
+                    :checked="isChecked(week.code)"
+        >
           {{ week.label }}
         </RogerCheck>
       </li>
@@ -11,55 +15,32 @@
 </template>
 <script>
 import RogerCheck from '@/components/atoms/RogerCheck'
+import Week from '@/constants/Week.js'
 
-let _weeks = [
-  {
-    id: 1,
-    code: 1,
-    label: '月'
-  },
-  {
-    id: 2,
-    code: 2,
-    label: '火'
-  },
-  {
-    id: 3,
-    code: 3,
-    label: '水'
-  },
-  {
-    id: 4,
-    code: 4,
-    label: '木'
-  },
-  {
-    id: 5,
-    code: 5,
-    label: '金'
-  },
-  {
-    id: 6,
-    code: 6,
-    label: '土'
-  },
-  {
-    id: 7,
-    code: 7,
-    label: '日'
-  }
-]
 export default {
   name: 'RogerSearchWeekCondition',
   components: {RogerCheck},
+  props: {
+    selected: {
+      type: Set
+    }
+  },
   data () {
     return {
-      weeks: _weeks
+      weeks: Week.items
     }
   },
   methods: {
     handleCheck (code) {
       this.$store.dispatch('changeWeek', code)
+    },
+    isChecked (id) {
+      console.log(`isChecked =>  ${this.selected.has(id)}`)
+      console.log(`isChecked =>  ${id}`)
+      for (let selectedKey in this.selected) {
+        console.log(selectedKey)
+      }
+      return this.selected.has(id)
     }
   }
 

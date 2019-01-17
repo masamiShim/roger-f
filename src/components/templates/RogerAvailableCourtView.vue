@@ -8,7 +8,7 @@
       </section>
       <section class="c-search-result l-search-result">
         <div class="c-search-result__title l-search-result__title">コート一覧</div>
-          <RogerAvailableCourtList :courts="getCourt()"/>
+        <RogerAvailableCourtList :courts="courts"/>
         <div>
         </div>
       </section>
@@ -22,7 +22,7 @@ import RogerHeader from '@/components/organisms/RogerHeader'
 import RogerFooter from '@/components/organisms/RogerFooter'
 import RogerAvailableCourtList from '@/components/organisms/RogerAvailableCourtList'
 import RogerSearchForm from '@/components/organisms/RogerSearchForm'
-// import formatter from '@/utils/dateformatter'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'RogerAvailableCourtView',
@@ -32,30 +32,12 @@ export default {
       intervalId: undefined
     }
   },
-  /*
-      computed: {
-        filterCourt () {
-          /*
-            const now = new Date()
-
-            now.setDate(now.getDate() + parseInt(this.$store.state.searchCondition.period))
-            const filteredCourtsByPeriod = courts
-              .filter(court => (court.date <= formatter.formatDateZeroPad(now, 'yyyyMMdd')))
-            return this.filterByWeek(filteredCourtsByPeriod)
-            return this.filterByWeek(courts)
-          const courts = this.$store.state.availableCourts
-          return courts
-          //      return !courts ? [] : courts
-        }
-      },
-    */
+  computed: mapGetters({
+    courts: 'filteredCourts'
+  }),
   methods: {
-    getCourt () {
-      return this.$store.state.availableCourts
-    },
     filterByWeek (list) {
       const weeks = this.$store.state.searchCondition.week
-      console.log(weeks)
       if (weeks.size > 0) {
         return list.filter(court => weeks.has(court.week))
       }
@@ -65,13 +47,13 @@ export default {
   beforeMount () {
     this.$store.dispatch('fetchCourts')
     /*
-          this.intervalId = setInterval(function () {
-            _store.dispatch('fetchCourts')
-          }, 3000)
-           */
+    this.intervalId = setInterval(() => {
+      this.$store.dispatch('fetchCourts')
+    }, 3000)
+    */
   },
   beforeDestroy () {
-    //    clearInterval(this.intervalId)
+    clearInterval(this.intervalId)
   }
 }
 </script>
@@ -80,6 +62,7 @@ export default {
   .main-content {
     margin-top: 60px;
   }
+
   .c-form-search {
   }
 
@@ -103,8 +86,10 @@ export default {
     width: 80%;
     margin: 50px auto 0 auto;
   }
+
   .c-search-result {
   }
+
   .c-search-result__title {
     font-size: 1.5em;
     font-weight: bold;

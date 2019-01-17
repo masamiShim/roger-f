@@ -4,6 +4,7 @@
             type="checkbox"
             :name="name"
             :id="formedId"
+            :checked="checked"
             @click="handleCheck()"
      />
     <label class="label" :for="formedId">
@@ -23,6 +24,10 @@ export default {
     id: {
       type: Number,
       default: 0
+    },
+    checked: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

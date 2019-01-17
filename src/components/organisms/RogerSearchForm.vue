@@ -3,13 +3,13 @@
     <div class="l-form-search__row">
       <div class="c-form-search__label l-form-search__label">期間</div>
       <div class="l-form-search__period">
-        <RogerSearchPeriodCondition/>
+        <RogerSearchPeriodCondition :selected="periods"/>
       </div>
     </div>
     <div class="l-form-search__row">
       <div class="c-form-search__label l-form-search__label">曜日</div>
       <div class="l-form-search__input">
-        <RogerSearchWeekCondition/>
+        <RogerSearchWeekCondition :selected="weeks" />
       </div>
     </div>
     <div class="l-form-search__button">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import RogerSearchPeriodCondition from '@/components/molecules/RogerSearchPeriodCondition'
 import RogerSearchWeekCondition from '@/components/molecules/RogerSearchWeekCondition'
 import RogerButton from '@/components/atoms/RogerButton'
@@ -28,17 +29,19 @@ import RogerButton from '@/components/atoms/RogerButton'
 export default {
   name: 'RogerSearchForm',
   components: {RogerButton, RogerSearchWeekCondition, RogerSearchPeriodCondition},
-  computed: {
-    canSearch () {
-      return (this.$store.state.searchCondition.period || this.$store.state.searchCondition.week)
-    }
-  },
+  computed: mapState({
+    periods: state => state.searchCondition.period,
+    weeks: state => state.searchCondition.week
+  }),
   methods: {
     handleClick () {
       if (!this.canSearch()) {
         return
       }
       this.$store.dispatch('fetchCourts')
+    },
+    canSearch () {
+      return (this.periods.length > 0 || this.weeks.length > 0)
     }
   }
 }

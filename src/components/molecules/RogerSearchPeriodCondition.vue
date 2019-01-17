@@ -2,7 +2,12 @@
   <div class="clear-fix">
     <ul>
       <li class="period-list" v-for="period in periods" :key="period.id">
-        <RogerRadio class="period-list-item" :id="period.id" :name="'_period'" :click="handleCheck(period.code)">
+        <RogerRadio class="period-list-item"
+                    :id="period.id"
+                    :name="'_period'"
+                    @check="handleCheck(period.code)"
+                    :checked="isChecked(period.code)"
+        >
           {{ period.label }}
         </RogerRadio>
       </li>
@@ -12,36 +17,26 @@
 
 <script>
 import RogerRadio from '@/components/atoms/RogerRadio'
-
-let periods = [
-  {
-    id: 1,
-    code: 7,
-    label: '1週間'
-  },
-  {
-    id: 2,
-    code: 14,
-    label: '2週間'
-  },
-  {
-    id: 3,
-    code: 30,
-    label: '1カ月'
-  }
-]
-
+import Period from '@/constants/Period'
 export default {
   name: 'RogerSearchPeriodCondition',
   components: {RogerRadio},
+  props: {
+    selected: {
+      type: Number
+    }
+  },
   data () {
     return {
-      periods: periods
+      periods: Period.items
     }
   },
   methods: {
-    handleCheck (ev, code) {
+    handleCheck (code) {
       this.$store.dispatch('changePeriod', code)
+    },
+    isChecked (code) {
+      return this.selected === code
     }
   }
 }
