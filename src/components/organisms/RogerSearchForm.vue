@@ -9,13 +9,8 @@
     <div class="l-form-search__row">
       <div class="c-form-search__label l-form-search__label">曜日</div>
       <div class="l-form-search__input">
-        <RogerSearchWeekCondition :selected="weeks" />
+        <RogerSearchWeekCondition :selectedWeeks="weeks" />
       </div>
-    </div>
-    <div class="l-form-search__button">
-      <RogerButton :click="handleClick">
-        <i class="fas fa-search" style="padding-right: .8em"></i>検索
-      </RogerButton>
     </div>
   </div>
 </template>
@@ -41,17 +36,13 @@ export default {
       this.$store.dispatch('fetchCourts')
     },
     canSearch () {
-      return (this.periods.length > 0 || this.weeks.length > 0)
+      return (this.periods.length > 0 || this.weeks.size > 0)
     }
   }
 }
 </script>
 
 <style scoped>
-  .l-form-search__button {
-    margin: 80px auto 0 auto;
-    width: 50%;
-  }
   .c-form-search__label {
     font-size: 1.2em;
     padding-bottom: 1.2em;

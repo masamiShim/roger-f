@@ -35,15 +35,6 @@ export default {
   computed: mapGetters({
     courts: 'filteredCourts'
   }),
-  methods: {
-    filterByWeek (list) {
-      const weeks = this.$store.state.searchCondition.week
-      if (weeks.size > 0) {
-        return list.filter(court => weeks.has(court.week))
-      }
-      return list
-    }
-  },
   beforeMount () {
     this.$store.dispatch('fetchCourts')
     /*
@@ -84,7 +75,7 @@ export default {
 
   .l-search-result {
     width: 80%;
-    margin: 50px auto 0 auto;
+    margin: 100px auto 0 auto;
   }
 
   .c-search-result {

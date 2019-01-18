@@ -16,7 +16,7 @@ module.exports = app => {
       time: '13:00',
       courtNum: 2,
       week: 6,
-      date: '20180107'
+      date: '20190107'
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ module.exports = app => {
       time: '10:00',
       courtNum: 1,
       week: 7,
-      date: '20180121'
+      date: '20190121'
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ module.exports = app => {
       time: '12:00',
       courtNum: 2,
       week: 1,
-      date: '20180110'
+      date: '20190128'
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ module.exports = app => {
       time: '14:00',
       courtNum: 1,
       week: 2,
-      date: '20180101'
+      date: '20190129'
     },
     {
       id: 5,
@@ -52,7 +52,7 @@ module.exports = app => {
       time: '10:00',
       courtNum: 1,
       week: 2,
-      date: '20180101'
+      date: '20190101'
     },
   ]
 
@@ -63,6 +63,7 @@ module.exports = app => {
       } else {
         res.push({
           date: cur.date,
+          week: cur.week,
           courts: [cur]
         })
       }

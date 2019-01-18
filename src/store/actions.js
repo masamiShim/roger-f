@@ -5,7 +5,6 @@ export default {
   fetchCourts: ({commit, state}) => {
     CourtFinder.fetch()
       .then((availableCourts) => {
-        console.log(availableCourts)
         commit(types.FETCH_COURT, availableCourts)
       })
       .catch(err => {

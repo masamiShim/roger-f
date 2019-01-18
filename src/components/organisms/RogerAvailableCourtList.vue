@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div v-if="isEmptyCourt()">
+    <div v-if="isEmptyCourt">
       空きコートが存在しません。
     </div>
     <div v-else>
       <div class="c-list-court__row l-list-court__row" v-for="item in courts" :key="item.date">
-        <div class="c-list-courts__title l-list-courts__title">{{ item.date }}</div>
+        <div class="c-list-courts__title l-list-courts__title">{{ item.date
+          }}<span>{{item.week | convertWeekLabel}}</span></div>
         <ul class="c-list-courts l-list-courts">
           <li v-for="court in item.courts"
               :key="court.id">
@@ -24,21 +25,28 @@
 
 <script>
 import RogerCourtItem from '@/components/molecules/RogerCourtItem'
+import Week from '@/constants/Week'
 
 export default {
   name: 'RogerAvailableCourtList',
   components: {RogerCourtItem},
+  filters: {
+    // これこそGetterにしたほうが良いのでは
+    convertWeekLabel: (code) => {
+      const elem = Week.items.find((w) => w.code === code)
+      return !elem ? '' : `(${elem.label})`
+    }
+  },
   props: {
     courts: {
       type: Array,
       required: true
     }
   },
-  methods: {
+  computed: {
     isEmptyCourt () {
-      return !this.courts && this.courts.length < 1
+      return !this.courts || this.courts.length < 1
     }
-
   }
 }
 </script>

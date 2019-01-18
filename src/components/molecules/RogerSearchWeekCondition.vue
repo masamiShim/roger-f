@@ -21,8 +21,9 @@ export default {
   name: 'RogerSearchWeekCondition',
   components: {RogerCheck},
   props: {
-    selected: {
-      type: Set
+    selectedWeeks: {
+      type: Set,
+      required: true
     }
   },
   data () {
@@ -33,14 +34,11 @@ export default {
   methods: {
     handleCheck (code) {
       this.$store.dispatch('changeWeek', code)
+      // FIXME: 多分ここでやらずともいけるのはず
+      this.$store.dispatch('fetchCourts')
     },
-    isChecked (id) {
-      console.log(`isChecked =>  ${this.selected.has(id)}`)
-      console.log(`isChecked =>  ${id}`)
-      for (let selectedKey in this.selected) {
-        console.log(selectedKey)
-      }
-      return this.selected.has(id)
+    isChecked (code) {
+      return this.selectedWeeks.has(code)
     }
   }
 

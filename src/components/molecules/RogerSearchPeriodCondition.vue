@@ -34,6 +34,8 @@ export default {
   methods: {
     handleCheck (code) {
       this.$store.dispatch('changePeriod', code)
+      // FIXME: 多分ここでやらずともいけるのはず
+      this.$store.dispatch('fetchCourts')
     },
     isChecked (code) {
       return this.selected === code
